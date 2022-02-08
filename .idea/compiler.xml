@@ -9,5 +9,8 @@
         <module name="HostelSystem" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="HostelSystem" target="12" />
+    </bytecodeTargetLevel>
   </component>
 </project>
