@@ -35,6 +35,7 @@ public class NewStudent extends javax.swing.JFrame {
         try {
 
             Connection connection=MysqlConnections.dbConnection();
+            assert connection != null;
             Statement statement=connection.createStatement();
             ResultSet resultSet=statement.executeQuery("SELECT * FROM hosteldb.rooms WHERE ActivationStat='Yes' AND Status='Not Booked'");
             while (resultSet.next()){
@@ -77,7 +78,7 @@ public class NewStudent extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        JLabel jLabel5 = new JLabel();
         jTextField3 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
@@ -264,11 +265,13 @@ public class NewStudent extends javax.swing.JFrame {
 
         try {
             Connection connection=MysqlConnections.dbConnection();
+            assert connection != null;
             PreparedStatement preparedStatement=connection.prepareStatement("INSERT INTO hosteldb.sTUDENTS(Name, IdNumber, PhoneNumber,RegNum, RoomNumber,Kin_Name,Kin_Phone,RelationShip) VALUES (?,?,?,?,?,?,?,?)");
             preparedStatement.setString(1, name.toUpperCase());
             preparedStatement.setString(2, IdNum.toUpperCase());
             preparedStatement.setString(3, phone.toUpperCase());
             preparedStatement.setString(4, RegNo.toUpperCase());
+            assert room != null;
             preparedStatement.setString(5, room.toUpperCase());
             preparedStatement.setString(6, Kin_Name.toUpperCase());
             preparedStatement.setString(7, Kin_Phone.toUpperCase());
@@ -296,7 +299,7 @@ public class NewStudent extends javax.swing.JFrame {
         // TODO add your handling code here:
         //close button
 
-        JOptionPane.showMessageDialog(null, "Confirm Close","select",JOptionPane.YES_NO_OPTION);
+        JOptionPane.showMessageDialog(null, "Confirm Close","select", JOptionPane.ERROR_MESSAGE);
             new NavigationPane().setVisible(true);
             setVisible(false);
 
@@ -360,7 +363,6 @@ public class NewStudent extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
